@@ -1,0 +1,86 @@
+
+
+<html>
+<head>
+<style>
+.left{
+margin-left:10px}
+
+</style>
+</head>
+<body>
+<header>
+
+<div style="position: relative; left: 0; top: 0;">
+<img class="left" src="C:\Users\Tejus dond\Desktop\breaking code\t.png" width="99%" height="37%" usemap="#planetmap">
+
+<map name="planetmap">
+  <area shape="rect" coords="7550,7550,8255,1526" alt="Sun" href="http://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_map">
+  <area shape="rect" coords="450,210,200,140" alt="Mercury" href="mercur.htm">
+  <area shape="rect" coords="250,120,100,50" alt="Venus" href="venus.htm">
+</map>
+
+</div>
+</header>
+<h1> VIDEOS </h1>
+
+<?php
+if(!mysql_connect('localhost','root','')||!mysql_select_db('breakingcode')){
+   die('Could not connect to the database');
+} 
+
+$query = "SELECT * FROM `videos`";
+
+$comments = mysql_query($query);
+
+echo "<h1>ALL VIDEOS</h1>";
+
+while($row = mysql_fetch_array($comments, MYSQL_ASSOC))
+{
+	
+  $name = $row['name'];
+  $id = $row['vidid'];
+  $vidlink = $row['vidlink'];
+  $problink = $row['problink'];
+  $diff = $row['diff'];
+  $domain=$row['domain'];
+   $height = $row['height'];
+   $website=$row['website'];
+  
+
+  
+  echo " 
+  
+
+  <div style='width: 350px;
+border: 1px solid gray;
+box-shadow: 1px 1px 3px #888;
+border-top: 10px solid green;
+min-height: 250px;
+padding-: 10px;
+font-size: 15pt;
+margin: 10px;
+'>
+	
+      Name: $name<br />
+      Website: $website<br>
+      Domain: $domain<br>
+    
+	 <a href='details.php?id=$vidid' <button id='$vidid' onclick='myFunction()' value='$vidid'>WATCH VIDEO</button></a>
+	  
+    </div>
+	
+	
+
+
+	
+  ";
+}
+
+
+
+?>
+
+
+</body>
+</html>
